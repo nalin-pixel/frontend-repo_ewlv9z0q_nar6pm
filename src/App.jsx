@@ -1,28 +1,49 @@
-import { useState } from 'react'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Row from './components/Row';
+import Footer from './components/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const featured = [
+    { title: 'Realtime Dashboard', desc: 'Streaming analytics with websockets and server-sent events.', href: 'https://example.com' },
+    { title: 'Design System', desc: 'A scalable UI kit with tokens and theming.', href: 'https://example.com' },
+    { title: 'E‑commerce UX', desc: 'Conversion‑focused storefront with headless CMS.', href: 'https://example.com' },
+    { title: 'AI Assistant', desc: 'Chat UX with RAG pipeline and observability.', href: 'https://example.com' },
+    { title: 'Video Pipeline', desc: 'Transcoding, thumbnails, and CDN delivery.', href: 'https://example.com' },
+  ];
+
+  const experience = [
+    { title: 'Senior Frontend Engineer · Fintech', desc: 'Led migration to micro‑frontends, cut bundle 35%, improved lighthouse to 95+' },
+    { title: 'Product Engineer · SaaS', desc: 'Shipped usage‑based billing, onboarding flows, and multi‑tenant features' },
+    { title: 'Founding Engineer · Startup', desc: 'Greenfield MVP to Series A; built design system and release pipeline' },
+    { title: 'Open Source', desc: 'Maintainer of several libraries, speaker, and mentor' },
+  ];
+
+  const skills = [
+    { title: 'React & TypeScript', desc: 'Hooks, performance, testing, accessibility' },
+    { title: 'Node & FastAPI', desc: 'APIs, queues, auth, observability' },
+    { title: 'Cloud & DevOps', desc: 'AWS, Docker, CI/CD, infra as code' },
+    { title: 'Design & UX', desc: 'Design systems, prototyping, motion' },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen w-full bg-black text-white">
+      <Navbar />
+      <Hero />
+      <main className="space-y-8">
+        <div id="projects">
+          <Row title="Featured Projects" items={featured} />
         </div>
-      </div>
+        <div id="experience">
+          <Row title="Experience" items={experience} />
+        </div>
+        <div id="skills">
+          <Row title="Skills & Tools" items={skills} />
+        </div>
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
